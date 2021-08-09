@@ -1,7 +1,10 @@
 from __future__ import print_function
+import urllib
 import time
 import boto3
 import json
+import requests
+from urllib.request import urlopen
 transcribe = boto3.client('transcribe')
 job_name = "Jstechno"
 job_uri = "s3://jstech1/test.mp4"
@@ -17,6 +20,17 @@ while True:
         break
         print("Not ready yet...")
         time.sleep(5)
-print("Job Are Created...")
+print(status)
+print('job are created...')
+# TranscriptFileUri
+
+url = status['TranscriptionJob']['Transcript']['TranscriptFileUri'];
+r = requests.get(url, stream = True)
+with open("jsohgnn.json", "wb") as Pypdf:
+    for chunk in r.iter_content(chunk_size = 1024):
+        if chunk:
+            Pypdf.write(chunk)
+
+
         
        
