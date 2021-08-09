@@ -17,9 +17,6 @@ while True:
         break
         print("Not ready yet...")
         time.sleep(5)
-        print(status)
-        file = open('text.txt','a')
-        file.write(TranscriptFileUri)
-        file.close()
+print("Job Are Created...")
         
        
